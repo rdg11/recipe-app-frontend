@@ -2,9 +2,9 @@ import React from 'react'
 
 function LandingPage() {
 	return (
-		<div>
+		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-8'>
 			<h1>Landing Page</h1>
-			<p>This is a section of body text.</p>
+			<p>text text text</p>
 		</div>
 	)
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 
-function RecipeSearchPage() {
+function MealPlanPage() {
 	return (
 		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-8'>
-			<h1>Recipe Search Page</h1>
-			<p>search!</p>
+			<h1>Meal Plan</h1>
+			<p>calendar!</p>
 		</div>
 	)
 }
 
-export default RecipeSearchPage
+export default MealPlanPage

@@ -21,7 +21,7 @@ function Navbar() {
 				<Link to={'/pantry'} className='p-4'>
 					Pantry
 				</Link>
-				<Link to={'/'} className='p-4'>
+				<Link to={'/mealplan'} className='p-4'>
 					Meal Plan
 				</Link>
 				<Link to={'/'} className='p-4'>
@@ -32,11 +32,11 @@ function Navbar() {
 				</Link>
 			</ul>
 			<div onClick={handleNav} className='block md:hidden'>
-				{!nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
+				{nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
 			</div>
 			<div
 				className={
-					!nav
+					nav
 						? 'fixed top-0 left-0 w-[60%] border-r h-full border-r-gray-900 bg-white ease-in-out duration-500'
 						: 'fixed left-[-100%]'
 				}
@@ -51,7 +51,7 @@ function Navbar() {
 					<Link to={'/pantry'} className='p-4 border-b'>
 						Pantry
 					</Link>
-					<Link to={'/'} className='p-4 border-b'>
+					<Link to={'/mealplan'} className='p-4 border-b'>
 						Meal Plan
 					</Link>
 				</ul>

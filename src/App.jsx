@@ -5,6 +5,7 @@ import RecipeSearchPage from './pages/RecipeSearchPage'
 import ErrorPage from './pages/ErrorPage'
 import PantryPage from './pages/PantryPage'
 import Navbar from './components/Navbar'
+import MealPlanPage from './pages/MealPlanPage'
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 			{
 				path: '/pantry',
 				element: <PantryPage />,
+			},
+			{
+				path: '/mealplan',
+				element: <MealPlanPage />,
 			},
 		],
 	},
