@@ -1,5 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 @import 'tailwindcss';
+
+@theme {
+	--font-roboto: 'Roboto', serif;
+	--font-outfit: 'Outfit', serif;
+	--color-primary: #e86d31;
+	--color-secondary: #305091;
+}
 
 body {
 	background-color: #ffffff;
+	font-family: 'Outfit', serif;
+}
+
+h1 {
+	font-family: 'Outfit', serif;
 }
