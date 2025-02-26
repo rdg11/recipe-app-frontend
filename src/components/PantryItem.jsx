@@ -10,9 +10,10 @@ function PantryItem({
 	handleIngredientChange,
 	handleAmountChange,
 }) {
-	const inputRef = useRef(null)
+	const input1Ref = useRef(null)
+	const input2Ref = useRef(null)
 
-	const handleKeyDown = event => {
+	const handleKeyDown = (event, inputRef) => {
 		if (event.key === 'Enter') {
 			inputRef.current.blur() // Unfocus the input field
 		}
@@ -35,8 +36,8 @@ function PantryItem({
 					maxLength={50}
 					placeholder='<Click to add ingredient>'
 					onChange={e => handleIngredientChange(id, e)}
-					onKeyDown={handleKeyDown}
-					ref={inputRef}
+					onKeyDown={e => handleKeyDown(e, input1Ref)}
+					ref={input1Ref}
 					className='w-full pl-2 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400 '
 				/>
 				<input
@@ -45,8 +46,8 @@ function PantryItem({
 					maxLength={20}
 					placeholder='-'
 					onChange={e => handleAmountChange(id, e)}
-					onKeyDown={handleKeyDown}
-					ref={inputRef}
+					onKeyDown={e => handleKeyDown(e, input2Ref)}
+					ref={input2Ref}
 					className='w-[150px] pr-2 text-right text-gray-600 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400'
 				/>
 			</div>
