@@ -10,7 +10,7 @@ function Navbar() {
 	}
 
 	return (
-		<div className='flex text-xl items-center justify-between h-24 max-w-[1240px] px-4 mx-auto border-b-2 border-black'>
+		<div className='flex sticky top-0 text-xl items-center justify-between h-24 max-w-[1240px] px-4 mx-auto border-b-2 border-black bg-white'>
 			<Link to={'/'} className='font-bold'>
 				LOGO
 			</Link>
