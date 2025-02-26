@@ -14,7 +14,7 @@ function PantryPage() {
 
 	useEffect(() => {
 		localStorage.setItem('ITEMS', JSON.stringify(items))
-		// localStorage.clear()
+		// console.log('ITEMS: ', items)
 	}, [items])
 
 	// Function to update the value of an Ingredient field
@@ -53,9 +53,9 @@ function PantryPage() {
 	}
 
 	return (
-		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-8 mb-10'>
+		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-6 mb-10'>
 			<h1 className='text-6xl font-bold font-roboto'>My Pantry</h1>
-			<PantryForm onSubmit={addItem} />
+			<PantryForm addItem={addItem} />
 			<div className='mt-8'>
 				<div className='flex justify-between mb-1.5 mt-4 text-gray-600'>
 					<h3 className='ml-[45px] '>Ingredient Name</h3>

@@ -2,9 +2,9 @@ import React from 'react'
 
 function MealPlanPage() {
 	return (
-		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-8'>
-			<h1>Meal Plan</h1>
-			<p>calendar!</p>
+		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-6 mb-10'>
+			<h1 className='text-6xl font-bold font-roboto'>Meal Plan Page</h1>
+			<p>text text text</p>
 		</div>
 	)
 }

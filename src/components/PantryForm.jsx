@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function PantryForm({ onSubmit }) {
+function PantryForm({ addItem }) {
 	const [newIngredient, setNewIngredient] = useState('')
 
 	// Function to add a new item
@@ -8,7 +8,7 @@ function PantryForm({ onSubmit }) {
 		e.preventDefault()
 		if (newIngredient === '') return
 
-		onSubmit(newIngredient)
+		addItem(newIngredient)
 
 		setNewIngredient('')
 	}
@@ -20,11 +20,11 @@ function PantryForm({ onSubmit }) {
 				onChange={e => setNewIngredient(e.target.value)}
 				maxLength={50}
 				placeholder='Type in any ingredient...'
-				className='h-[48px] flex flex-auto pl-4 mr-4 bg-gray-100 border-b border-b-gray-400 items-center text-xl focus:outline-0 focus:placeholder-gray-300'
+				className='h-[48px] w-full flex pl-4 mr-4 bg-gray-100 border-b border-b-gray-400 items-center text-xl focus:outline-0 focus:placeholder-gray-300'
 			/>
 			<button
 				onClick={e => handleSubmit(e)}
-				className='w-[115px] flex items-center justify-center hover:cursor-pointer bg-primary tracking-widest text-white '
+				className='w-[140px] flex items-center justify-center hover:cursor-pointer bg-primary tracking-widest text-white '
 			>
 				ADD ITEM
 			</button>

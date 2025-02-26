@@ -19,15 +19,23 @@ function PantryItem({
 		}
 	}
 
+	const handleFocus = inputRef => {
+		const input = inputRef.current
+		setTimeout(() => {
+			// Move the caret to the end of the text
+			input.setSelectionRange(input.value.length, input.value.length)
+		}, 10) // Slight delay to ensure focus happens first
+	}
+
 	return (
 		<li
 			className={`flex justify-between ${index % 2 == 0 ? 'bg-indigo-50 border-b border-b-gray-200' : 'border-b border-b-white'}`}
 		>
 			<button
 				onClick={() => deleteItem(id)}
-				className='flex items-center justify-center size-10 hover:cursor-pointer'
+				className='flex items-center justify-center size-10 hover:cursor-pointer group'
 			>
-				<IoCloseOutline className='text-2xl text-gray-500 mt-[2px]' />
+				<IoCloseOutline className='text-2xl text-gray-500 mt-[2px] group-hover:text-gray-900' />
 			</button>
 			<div className='flex justify-between w-full'>
 				<input
@@ -37,6 +45,7 @@ function PantryItem({
 					placeholder='<Click to add ingredient>'
 					onChange={e => handleIngredientChange(id, e)}
 					onKeyDown={e => handleKeyDown(e, input1Ref)}
+					onFocus={() => handleFocus(input1Ref)}
 					ref={input1Ref}
 					className='w-full pl-2 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400 '
 				/>
@@ -47,6 +56,7 @@ function PantryItem({
 					placeholder='-'
 					onChange={e => handleAmountChange(id, e)}
 					onKeyDown={e => handleKeyDown(e, input2Ref)}
+					onFocus={() => handleFocus(input2Ref)}
 					ref={input2Ref}
 					className='w-[150px] pr-2 text-right text-gray-600 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400'
 				/>
