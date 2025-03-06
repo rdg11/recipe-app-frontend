@@ -24,10 +24,10 @@ function Navbar() {
 				<Link to={'/mealplan'} className='p-4'>
 					Meal Plan
 				</Link>
-				<Link to={'/'} className='p-4'>
+				<Link to={'/register'} className='p-4'>
 					Signup
 				</Link>
-				<Link to={'/'} className='p-4'>
+				<Link to={'/login'} className='p-4'>
 					Login
 				</Link>
 			</ul>

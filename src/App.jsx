@@ -6,6 +6,10 @@ import ErrorPage from './pages/ErrorPage'
 import PantryPage from './pages/PantryPage'
 import Navbar from './components/Navbar'
 import MealPlanPage from './pages/MealPlanPage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import axios from 'axios'
+
 
 const router = createBrowserRouter([
 	{
@@ -24,6 +28,14 @@ const router = createBrowserRouter([
 			{
 				path: '/pantry',
 				element: <PantryPage />,
+			},
+			{
+				path: '/login',
+				element: <LoginPage />,
+			},
+			{
+				path: '/register',
+				element: <RegisterPage />,
 			},
 			{
 				path: '/mealplan',
