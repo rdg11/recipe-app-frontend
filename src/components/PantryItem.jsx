@@ -29,7 +29,7 @@ function PantryItem({
 
 	return (
 		<li
-			className={`flex justify-between ${index % 2 == 0 ? 'bg-indigo-50 border-b border-b-gray-200' : 'border-b border-b-white'}`}
+			className={`flex justify-between border-b ${index % 2 == 0 ? 'bg-indigo-50 border-b-gray-200' : 'border-b-white'}`}
 		>
 			<button
 				onClick={() => deleteItem(id)}
