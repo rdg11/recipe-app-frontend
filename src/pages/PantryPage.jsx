@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import PantryForm from '../components/PantryForm'
 import PantryList from '../components/PantryList'
+import { useQuery } from '@tanstack/react-query'
+import { testFetchPantry } from '../api/pantry'
 
 /* -- Temporarily using local storage to test -- */
 
 function PantryPage() {
-	const [items, setItems] = useState(() => {
-		const localValue = localStorage.getItem('ITEMS')
-		if (localValue == null) return []
-
-		return JSON.parse(localValue)
+	const { data, isPending, isError } = useQuery({
+		queryKey: ['ingredients'],
+		queryFn: () => testFetchPantry(1),
 	})
 
+	// const [items, setItems] = useState(() => {
+	// 	const localValue = localStorage.getItem('ITEMS')
+	// 	if (localValue == null) return []
+
+	// 	return JSON.parse(localValue)
+	// })
+	// useEffect(() => {
+	// 	localStorage.setItem('ITEMS', JSON.stringify(items))
+	// 	console.log('ITEMS: ', items)
+	// }, [items])
+
+	const [items, setItems] = useState([])
+
 	useEffect(() => {
-		localStorage.setItem('ITEMS', JSON.stringify(items))
-		// console.log('ITEMS: ', items)
-	}, [items])
+		if (data) {
+			setItems(data)
+		}
+	}, [data])
 
 	// Function to update the value of an Ingredient field
 	function handleIngredientChange(id, event) {
@@ -52,11 +66,19 @@ function PantryPage() {
 		})
 	}
 
+	function saveItems() {}
+
+	console.log('DATA: ', data)
+
+	if (isPending) return <h1>Loading...</h1>
+	if (isError) return <h1>error</h1>
+
 	return (
 		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-6 mb-10'>
 			<h1 className='text-6xl font-bold font-roboto'>My Pantry</h1>
 			<PantryForm addItem={addItem} />
 			<div className='mt-8'>
+				<button>SAVE</button>
 				<div className='flex justify-between mb-1.5 mt-4 text-gray-600'>
 					<h3 className='ml-[45px] '>Ingredient Name</h3>
 					<h3 className='mr-[10px]'>Amount</h3>
