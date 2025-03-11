@@ -19,11 +19,12 @@ function LoginPage() {
             alert("Login successful!");
             navigate("/");
         } catch (error) {
+            localStorage.removeItem("token");
             alert(error.response?.data?.message || "Login failed");
         }
     };
 
-       return (
+    return (
         //centers login form
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             {/* Container for the login form with styling for background, padding, and shadow */}

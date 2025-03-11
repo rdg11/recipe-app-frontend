@@ -9,6 +9,7 @@ import MealPlanPage from './pages/MealPlanPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import axios from 'axios'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 const router = createBrowserRouter([
@@ -23,11 +24,17 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/recipes',
-				element: <RecipeSearchPage />,
+				element: ( <ProtectedRoute>
+				<RecipeSearchPage />
+				</ProtectedRoute>
+			), 
 			},
 			{
 				path: '/pantry',
-				element: <PantryPage />,
+				element:( <ProtectedRoute>
+				<PantryPage />
+				</ProtectedRoute>
+				),
 			},
 			{
 				path: '/login',
@@ -39,7 +46,10 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/mealplan',
-				element: <MealPlanPage />,
+				element: ( <ProtectedRoute>
+				<MealPlanPage />
+				</ProtectedRoute>
+			),
 			},
 		],
 	},
