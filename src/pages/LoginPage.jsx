@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
-    //const {store, actions} = useContext(Context)
+    const { setIsAuthenticated } = useAuth();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -16,10 +17,12 @@ function LoginPage() {
                 password
             });
             localStorage.setItem("token", response.data.access_token);
+            setIsAuthenticated(true);
             alert("Login successful!");
             navigate("/");
         } catch (error) {
             localStorage.removeItem("token");
+            setIsAuthenticated(false);
             alert(error.response?.data?.message || "Login failed");
         }
     };

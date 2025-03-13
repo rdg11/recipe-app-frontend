@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { createBrowserRouter, Outlet, RouterProvider, Link } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import RecipeSearchPage from './pages/RecipeSearchPage'
@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import axios from 'axios'
 import ProtectedRoute from './components/ProtectedRoute'
+import { AuthProvider } from './context/AuthContext';
 
 
 const router = createBrowserRouter([
@@ -61,11 +62,13 @@ function App() {
 
 function Root() {
 	return (
+	<AuthProvider>
 		<div>
 			<Navbar />
 			<Outlet />
 		</div>
-	)
+	</AuthProvider>
+	);
 }
 
 export default App
