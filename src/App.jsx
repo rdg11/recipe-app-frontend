@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider, Link } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import RecipeSearchPage from './pages/RecipeSearchPage'
@@ -10,8 +10,8 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import axios from 'axios'
 import ProtectedRoute from './components/ProtectedRoute'
-import { AuthProvider } from './context/AuthContext';
-
+import { AuthProvider } from './context/AuthContext'
+import Footer from './components/Footer'
 
 const router = createBrowserRouter([
 	{
@@ -25,16 +25,18 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/recipes',
-				element: ( <ProtectedRoute>
-				<RecipeSearchPage />
-				</ProtectedRoute>
-			), 
+				element: (
+					<ProtectedRoute>
+						<RecipeSearchPage />
+					</ProtectedRoute>
+				),
 			},
 			{
 				path: '/pantry',
-				element:( <ProtectedRoute>
-				<PantryPage />
-				</ProtectedRoute>
+				element: (
+					<ProtectedRoute>
+						<PantryPage />
+					</ProtectedRoute>
 				),
 			},
 			{
@@ -47,10 +49,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/mealplan',
-				element: ( <ProtectedRoute>
-				<MealPlanPage />
-				</ProtectedRoute>
-			),
+				element: (
+					<ProtectedRoute>
+						<MealPlanPage />
+					</ProtectedRoute>
+				),
 			},
 		],
 	},
@@ -62,13 +65,14 @@ function App() {
 
 function Root() {
 	return (
-	<AuthProvider>
-		<div>
-			<Navbar />
-			<Outlet />
-		</div>
-	</AuthProvider>
-	);
+		<AuthProvider>
+			<div className='min-h-[100vh] flex flex-col'>
+				<Navbar />
+				<Outlet />
+				<Footer />
+			</div>
+		</AuthProvider>
+	)
 }
 
 export default App

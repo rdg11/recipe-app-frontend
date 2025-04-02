@@ -31,20 +31,20 @@ function PantryPage() {
 		}
 	}, [data])
 
-	// Function to update the value of an Ingredient field
-	function handleIngredientChange(id, event) {
+	// Function to update the value of an Quantity field
+	function handleQuantityChange(id, event) {
 		setItems(currentItems =>
 			currentItems.map(item =>
-				item.id === id ? { ...item, ingredient: event.target.value } : item,
+				item.id === id ? { ...item, quantity: event.target.value } : item,
 			),
 		)
 	}
 
-	// Function to update the value of an Amount field
-	function handleAmountChange(id, event) {
+	// Function to update the value of an Unit field
+	function handleUnitChange(id, event) {
 		setItems(currentItems =>
 			currentItems.map(item =>
-				item.id === id ? { ...item, amount: event.target.value } : item,
+				item.id === id ? { ...item, unit: event.target.value } : item,
 			),
 		)
 	}
@@ -74,21 +74,24 @@ function PantryPage() {
 	if (isError) return <h1>error</h1>
 
 	return (
-		<div className='max-w-[1000px] flex flex-col mx-auto mt-[100px] px-6 mb-10'>
-			<h1 className='text-6xl font-bold font-roboto'>My Pantry</h1>
-			<PantryForm addItem={addItem} />
-			<div className='mt-8'>
-				<button>SAVE</button>
-				<div className='flex justify-between mb-1.5 mt-4 text-gray-600'>
-					<h3 className='ml-[45px] '>Ingredient Name</h3>
-					<h3 className='mr-[10px]'>Amount</h3>
+		<div className='flex flex-col items-center mt-[100px] px-6 mb-96'>
+			<div className='max-w-[1000px] w-full'>
+				<h1 className='text-6xl font-bold font-roboto'>My Pantry</h1>
+				<PantryForm addItem={addItem} />
+				<div className='w-full mt-8'>
+					<button>SAVE</button>
+					<div className='flex justify-between mb-1.5 mt-4 text-gray-600'>
+						<h3 className='ml-[45px] mr-auto'>Ingredient Name</h3>
+						<h3 className='mr-[40px]'>Quantity</h3>
+						<h3 className='mr-[50px]'>Unit</h3>
+					</div>
+					<PantryList
+						items={items}
+						deleteItem={deleteItem}
+						handleQuantityChange={handleQuantityChange}
+						handleUnitChange={handleUnitChange}
+					/>
 				</div>
-				<PantryList
-					items={items}
-					deleteItem={deleteItem}
-					handleIngredientChange={handleIngredientChange}
-					handleAmountChange={handleAmountChange}
-				/>
 			</div>
 		</div>
 	)

@@ -15,7 +15,7 @@ function RecipeSearchPage() {
 	}
 
 	return (
-		<div className='max-w-[1000px] flex items-center flex-col mx-auto mt-[100px] mb-10'>
+		<div className='flex items-center flex-col mt-[100px] mb-10'>
 			<RecipeSearchForm generateRecipes={generateRecipes} />
 			<RecipeSearchGrid generatedRecipes={generatedRecipes} />
 		</div>
