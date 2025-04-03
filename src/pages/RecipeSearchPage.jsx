@@ -5,14 +5,33 @@ import RecipeSearchGrid from '../components/RecipeSearchGrid'
 function RecipeSearchPage() {
 	const [generatedRecipes, setGeneratedRecipes] = useState([])
 
-	function generateRecipes(userQuery) {
-		// fetch generate recipes api
-
-		// display recipes in cards
-		setGeneratedRecipes(sampleRecipes)
-
-		console.log('userQuery: ', userQuery, 'Generated Recipes: ', sampleRecipes)
+	async function generateRecipes(userQuery) {
+		try {
+			const token = localStorage.getItem("access_token");
+	
+			const response = await fetch("http://localhost:5000/recipe/generate", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+				body: JSON.stringify({ user_query: userQuery }),
+			});
+	
+			if (!response.ok) {
+				const error = await response.json();
+				console.error("Error from backend:", error);
+				return;
+			}
+	
+			const data = await response.json();
+			setGeneratedRecipes(data.recipes);
+			console.log("Generated Recipes:", data.recipes);
+		} catch (err) {
+			console.error("Fetch error:", err);
+		}
 	}
+	
 
 	return (
 		<div className='max-w-[1000px] flex items-center flex-col mx-auto mt-[100px] mb-10'>
