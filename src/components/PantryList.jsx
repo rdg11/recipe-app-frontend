@@ -1,7 +1,7 @@
 import React from 'react'
 import PantryItem from './PantryItem'
 
-function PantryList({ items, deleteItem, handleIngredientChange, handleAmountChange }) {
+function PantryList({ items, deleteItem, handleQuantityChange, handleUnitChange }) {
 	return (
 		<ul className='flex flex-col justify-between'>
 			{items.length === 0 && (
@@ -13,10 +13,11 @@ function PantryList({ items, deleteItem, handleIngredientChange, handleAmountCha
 					index={index}
 					id={item.id}
 					ingredient={item.ingredient}
-					amount={item.amount}
+					quantity={item.quantity}
+					unit={item.unit}
 					deleteItem={deleteItem}
-					handleIngredientChange={handleIngredientChange}
-					handleAmountChange={handleAmountChange}
+					handleQuantityChange={handleQuantityChange}
+					handleUnitChange={handleUnitChange}
 				/>
 			))}
 		</ul>

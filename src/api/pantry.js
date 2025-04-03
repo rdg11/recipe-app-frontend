@@ -19,9 +19,9 @@ function wait(duration) {
 }
 
 const INGREDIENTS = [
-	{ id: '1', ingredient: 'Tomato paste', amount: '' },
-	{ id: '2', ingredient: 'Bananas', amount: '3' },
-	{ id: '3', ingredient: 'Ketchup', amount: '' },
-	{ id: '4', ingredient: 'Tortillas', amount: '8' },
-	{ id: '5', ingredient: 'Ground beef', amount: '2 lbs' },
+	{ id: '1', ingredient: 'Tomato paste', quantity: '', unit: '' },
+	{ id: '2', ingredient: 'Bananas', quantity: '3', unit: '' },
+	{ id: '3', ingredient: 'Ketchup', quantity: '', unit: '' },
+	{ id: '4', ingredient: 'Tortillas', quantity: '8', unit: '' },
+	{ id: '5', ingredient: 'Ground beef', quantity: '2', unit: 'lbs' },
 ]
