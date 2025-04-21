@@ -14,6 +14,7 @@
 		"@tanstack/react-query": "^5.67.1",
 		"@tanstack/react-query-devtools": "^5.67.1",
 		"axios": "^1.8.1",
+		"dependencies": "^0.0.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-icons": "^5.4.0",

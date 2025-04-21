@@ -3,10 +3,15 @@ import RecipeSearchForm from '../components/RecipeSearchForm'
 import RecipeSearchGrid from '../components/RecipeSearchGrid'
 
 function RecipeSearchPage() {
-	const [generatedRecipes, setGeneratedRecipes] = useState([])
+	// Initialize generatedRecipes as null instead of empty array
+	// null means "no search has been performed yet"
+	// empty array means "search was performed but no recipes were found"
+	const [generatedRecipes, setGeneratedRecipes] = useState(null)
+	const [isSearching, setIsSearching] = useState(false)
 
 	async function generateRecipes(userQuery) {
 		try {
+			setIsSearching(true);
 			const token = localStorage.getItem("token");
 	
 			const response = await fetch("http://localhost:5000/recipe/generate", {
@@ -21,14 +26,17 @@ function RecipeSearchPage() {
 			if (!response.ok) {
 				const error = await response.json();
 				console.error("Error from backend:", error);
+				setIsSearching(false);
 				return;
 			}
 	
 			const data = await response.json();
-			setGeneratedRecipes(data.recipes);
+			setGeneratedRecipes(data.recipes || []); // Handle if recipes is undefined
 			console.log("Generated Recipes:", data.recipes);
+			setIsSearching(false);
 		} catch (err) {
 			console.error("Fetch error:", err);
+			setIsSearching(false);
 		}
 	}
 	
@@ -36,30 +44,16 @@ function RecipeSearchPage() {
 	return (
 		<div className='flex items-center flex-col mt-[100px] mb-10'>
 			<RecipeSearchForm generateRecipes={generateRecipes} />
-			<RecipeSearchGrid generatedRecipes={generatedRecipes} />
+			
+			{isSearching ? (
+				<div className='mt-10 text-center'>
+					<p className='text-gray-600'>Searching for recipes...</p>
+				</div>
+			) : (
+				<RecipeSearchGrid generatedRecipes={generatedRecipes} />
+			)}
 		</div>
 	)
 }
-
-const sampleRecipe = {
-	recipeName: 'Vegetable Stir-Fry',
-	description: 'A quick and healthy vegetable stir-fry packed with flavor.',
-	steps: [
-		'Heat oil in a pan over medium heat.',
-		'Add garlic and onions, sauté until fragrant.',
-		'Add chopped bell peppers, carrots, and broccoli, stir-fry for 5 minutes.',
-		'Mix in soy sauce, sesame oil, and seasonings.',
-		'Cook for another 2-3 minutes until vegetables are tender but crisp.',
-		'Serve hot with rice or noodles.',
-	],
-	ingredients: 'Broccoli, Carrot, Bell Pepper, Garlic, Soy Sauce, Sesame Oil, Onion',
-	allergyFlags: {
-		containsNuts: false,
-		containsGluten: true,
-		containsDairy: false,
-	},
-}
-
-const sampleRecipes = [sampleRecipe, sampleRecipe, sampleRecipe, sampleRecipe, sampleRecipe]
 
 export default RecipeSearchPage
