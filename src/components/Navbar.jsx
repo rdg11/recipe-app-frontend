@@ -22,7 +22,10 @@ function Navbar() {
 			<div className='flex items-center justify-between max-w-[1240px] mx-auto h-22 px-4 text-xl'>
 				<div className='flex gap-14'>
 					<Link to='/' className='py-4 font-bold text-black'>
-						RECIPE APP
+						<div className='flex'>
+							<p className='text-secondary'>SMART</p>
+							<p className='text-primary'>RECIPES</p>
+						</div>
 					</Link>
 					<ul className='hidden gap-10 text-gray-500 md:flex'>
 						<Link to='/recipes' className='py-4'>
@@ -52,7 +55,7 @@ function Navbar() {
 						</>
 					)}
 				</ul>
-				<div onClick={handleNav} className={`block md:${nav || 'hidden'}`}>
+				<div onClick={handleNav} className={`block md:hidden`}>
 					{nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
 				</div>
 				<div

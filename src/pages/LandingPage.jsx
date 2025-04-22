@@ -13,7 +13,7 @@ function LandingPage() {
 								Plan And Prepare Meals Quick & Easy
 							</h1>
 							<p className='mt-6 text-2xl w-[400px]'>
-								This is a section of body text, this is some more body text!
+								Find delicious recipes, save favorites, and start cooking!
 							</p>
 						</div>
 						<div className='flex justify-between text-xl h-[60px]'>
