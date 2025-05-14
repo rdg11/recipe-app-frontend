@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { IoCloseOutline } from 'react-icons/io5'
+import React, { useRef } from 'react';
+import { IoCloseOutline } from 'react-icons/io5';
 
 function PantryItem({
 	id,
@@ -10,23 +10,20 @@ function PantryItem({
 	deleteItem,
 	handleQuantityChange,
 	handleUnitChange,
+	handleKeyPress,
 }) {
-	const input1Ref = useRef(null)
-	const input2Ref = useRef(null)
-
-	const handleKeyDown = (event, inputRef) => {
-		if (event.key === 'Enter') {
-			inputRef.current.blur() // Unfocus the input field
-		}
-	}
+	const input1Ref = useRef(null);
+	const input2Ref = useRef(null);
 
 	const handleFocus = inputRef => {
-		const input = inputRef.current
+		const input = inputRef.current;
 		setTimeout(() => {
 			// Move the caret to the end of the text
-			input.setSelectionRange(input.value.length, input.value.length)
-		}, 10) // Slight delay to ensure focus happens first
-	}
+			if (input && input.value) {
+				input.setSelectionRange(input.value.length, input.value.length);
+			}
+		}, 10); // Slight delay to ensure focus happens first
+	};
 
 	return (
 		<li
@@ -46,7 +43,7 @@ function PantryItem({
 					maxLength={20}
 					placeholder='-'
 					onChange={e => handleQuantityChange(id, e)}
-					onKeyDown={e => handleKeyDown(e, input1Ref)}
+					onKeyPress={handleKeyPress}
 					onFocus={() => handleFocus(input1Ref)}
 					ref={input1Ref}
 					className='w-[100px] pr-1 text-right text-gray-600 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400'
@@ -57,14 +54,14 @@ function PantryItem({
 					maxLength={20}
 					placeholder='-'
 					onChange={e => handleUnitChange(id, e)}
-					onKeyDown={e => handleKeyDown(e, input2Ref)}
+					onKeyPress={handleKeyPress}
 					onFocus={() => handleFocus(input2Ref)}
 					ref={input2Ref}
 					className='w-[100px] pl-1 text-left text-gray-600 hover:cursor-default focus:hover:cursor-text focus:outline-1 focus:outline-dashed outline-gray-400'
 				/>
 			</div>
 		</li>
-	)
+	);
 }
 
-export default PantryItem
+export default PantryItem;

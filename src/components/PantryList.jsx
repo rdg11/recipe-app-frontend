@@ -1,7 +1,13 @@
-import React from 'react'
-import PantryItem from './PantryItem'
+import React from 'react';
+import PantryItem from './PantryItem';
 
-function PantryList({ items, deleteItem, handleQuantityChange, handleUnitChange }) {
+function PantryList({ 
+    items, 
+    deleteItem, 
+    handleQuantityChange, 
+    handleUnitChange,
+    handleKeyPress
+}) {
 	return (
 		<ul className='flex flex-col justify-between'>
 			{items.length === 0 && (
@@ -18,10 +24,11 @@ function PantryList({ items, deleteItem, handleQuantityChange, handleUnitChange 
 					deleteItem={deleteItem}
 					handleQuantityChange={handleQuantityChange}
 					handleUnitChange={handleUnitChange}
+					handleKeyPress={handleKeyPress}
 				/>
 			))}
 		</ul>
-	)
+	);
 }
 
-export default PantryList
+export default PantryList;

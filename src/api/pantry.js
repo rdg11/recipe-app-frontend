@@ -5,6 +5,16 @@ export const fetchPantry = async userId => {
 	return response.data
 }
 
+export const updatePantry = async (userId, changes) => {
+  const { addedIngredients, updatedIngredients, deletedIngredients } = changes;
+  const response = await api.patch(`/update_pantry/${userId}`, {
+    addedIngredients,
+    updatedIngredients,
+    deletedIngredients
+  });
+  return response.data;
+};
+
 // - - test - -
 
 export const testFetchPantry = async userId => {
