@@ -17,11 +17,14 @@ function LoginPage() {
                 password
             });
             localStorage.setItem("token", response.data.access_token);
+            localStorage.setItem("userEmail", email);
+
             setIsAuthenticated(true);
             alert("Login successful!");
             navigate("/");
         } catch (error) {
             localStorage.removeItem("token");
+            localStorage.removeItem("userEmail");
             setIsAuthenticated(false);
             alert(error.response?.data?.message || "Login failed");
         }
