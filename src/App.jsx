@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage'
 import RecipeSearchPage from './pages/RecipeSearchPage'
 import ErrorPage from './pages/ErrorPage'
 import PantryPage from './pages/PantryPage'
+import FavoritesPage from './pages/FavoritesPage' // Import FavoritesPage
 import Navbar from './components/Navbar'
 import MealPlanPage from './pages/MealPlanPage'
 import LoginPage from './pages/LoginPage'
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
 				element: (
 					<ProtectedRoute>
 						<PantryPage />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: '/favorites',
+				element: (
+					<ProtectedRoute>
+						<FavoritesPage />
 					</ProtectedRoute>
 				),
 			},

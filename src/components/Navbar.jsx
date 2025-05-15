@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
+import { FaHeart } from 'react-icons/fa'
 import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
@@ -33,6 +34,9 @@ function Navbar() {
 						</Link>
 						<Link to='/pantry' className='py-4'>
 							Pantry
+						</Link>
+						<Link to='/favorites' className='py-4'>
+							Favorites
 						</Link>
 						<Link to='/mealplan' className='py-4'>
 							Meal Plan
@@ -74,6 +78,9 @@ function Navbar() {
 						</Link>
 						<Link to='/pantry' className='p-4 border-b'>
 							Pantry
+						</Link>
+						<Link to='/favorites' className='p-4 border-b'>
+							Favorites
 						</Link>
 						<Link to='/mealplan' className='p-4 border-b'>
 							Meal Plan
