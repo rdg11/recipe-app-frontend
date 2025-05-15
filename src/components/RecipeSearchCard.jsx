@@ -4,18 +4,14 @@ import { FaClock, FaLeaf, FaBreadSlice, FaTree } from 'react-icons/fa'
 function RecipeSearchCard({ recipe }) {
   const [showDetails, setShowDetails] = useState(false)
 
-  // Common preparation time - could be customized based on recipe complexity
-  const prepTime = "45 min"
+  // Get preparation time from recipe or fallback to default
+  const prepTime = recipe.prepTime || "30 min"
   
-  // Determine dietary flags from recipe data if available
-  const isVegetarian = recipe.allergyFlags?.containsVegetarian || 
-                       (!recipe.allergyFlags?.containsMeat && !recipe.ingredients?.toLowerCase().includes("meat") && 
-                        !recipe.ingredients?.toLowerCase().includes("chicken") && 
-                        !recipe.ingredients?.toLowerCase().includes("beef") && 
-                        !recipe.ingredients?.toLowerCase().includes("pork"))
-  
-  const containsGluten = recipe.allergyFlags?.containsGluten || false
-  const containsNuts = recipe.allergyFlags?.containsNuts || false
+  // Correctly determine dietary flags using explicit boolean values
+  const isVegetarian = recipe.allergyFlags?.containsVegetarian === true
+  const containsMeat = recipe.allergyFlags?.containsMeat === true
+  const containsGluten = recipe.allergyFlags?.containsGluten === true
+  const containsNuts = recipe.allergyFlags?.containsNuts === true
 
   return (
     <div className='bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-all'>
@@ -55,7 +51,7 @@ function RecipeSearchCard({ recipe }) {
           <div className='mb-4'>
             <h4 className='font-medium mb-2'>Ingredients:</h4>
             <p className='text-gray-700'>{recipe.ingredients}</p>
-            {recipe.missingIngredients && (
+            {recipe.missingIngredients && recipe.missingIngredients.trim() !== "" && (
               <div className='mt-2'>
                 <h4 className='font-medium mb-1'>Missing Ingredients:</h4>
                 <p className='text-gray-700'>{recipe.missingIngredients}</p>
